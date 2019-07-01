@@ -12,7 +12,7 @@ tags: DMCA github
 
 **今天咱们就来聊聊这次蛋疼的经历，介绍一下什么是DMCA，github仓库被DMCA了怎么办以及如何挽回被关掉的仓库。**
 
-- [1. 博客咋变成404呢？](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-05-07-fabric%E8%81%94%E7%9B%9F%E9%93%BE%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98TPS.md#1-fabric%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E4%BA%A4%E6%98%93%E5%86%B2%E7%AA%81)
+- [1. 博客变404](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-05-07-fabric%E8%81%94%E7%9B%9F%E9%93%BE%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98TPS.md#1-fabric%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E4%BA%A4%E6%98%93%E5%86%B2%E7%AA%81)
 
 - [2. 原来是github仓库被DMCA（拔网线）了](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-05-07-fabric%E8%81%94%E7%9B%9F%E9%93%BE%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98TPS.md#2-%E5%9F%BA%E4%BA%8E%E9%AB%98%E6%95%88chaincode%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%81%BF%E5%85%8D%E4%BA%A4%E6%98%93%E5%86%B2%E7%AA%81%E6%96%B9%E5%BC%8F)
 
@@ -25,12 +25,11 @@ tags: DMCA github
 - [4. 这次蛋疼的经历总结](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-05-07-fabric%E8%81%94%E7%9B%9F%E9%93%BE%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98TPS.md#4-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 
 
-## 1. 博客咋变成404呢？
+## 1. 博客变404了
 
 `"你是不是把我设置成你的博客黑名单了?"`
 
-在一个风和日丽的下午，一位朋友在钉钉上给我来了这么一句。我寻思着，这个博客也是没有几个点击的
-
+在一个风和日丽的下午，一位朋友给我发来消息。毕竟这个博客也是没有几个点击量的，拉黑这种事情是不存在的。然后打开博客主页，竟然返回发现404。
 
 
 
