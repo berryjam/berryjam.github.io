@@ -16,7 +16,7 @@ tags: DMCA github
 
 - [2. 原来是github仓库被DMCA take down（拔网线）了](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-06-25-%E8%AE%B0github%E4%BB%93%E5%BA%93%E8%A2%ABDMCA%20take%20down%E7%BB%8F%E5%8E%86.md#2-%E5%8E%9F%E6%9D%A5%E6%98%AFgithub%E4%BB%93%E5%BA%93%E8%A2%ABdmca-take-down%E6%8B%94%E7%BD%91%E7%BA%BF%E4%BA%86)
 
-- [3. 还能抢救一下，真的就一下](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-05-07-fabric%E8%81%94%E7%9B%9F%E9%93%BE%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98TPS.md#3-%E5%9F%BA%E4%BA%8E%E9%98%BB%E5%A1%9E%E5%92%8C%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%BC%8F%E7%9A%84%E9%81%BF%E5%85%8D%E4%BA%A4%E6%98%93%E5%86%B2%E7%AA%81%E6%96%B9%E5%BC%8F)
+- [3. 还能抢救一下，真的就一下](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-06-25-%E8%AE%B0github%E4%BB%93%E5%BA%93%E8%A2%ABDMCA%20take%20down%E7%BB%8F%E5%8E%86.md#3-%E8%BF%98%E8%83%BD%E6%8A%A2%E6%95%91%E4%B8%80%E4%B8%8B%E7%9C%9F%E7%9A%84%E5%B0%B1%E4%B8%80%E4%B8%8B)
 
 - [4. 这次蛋疼的经历总结](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-05-07-fabric%E8%81%94%E7%9B%9F%E9%93%BE%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98TPS.md#4-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 
