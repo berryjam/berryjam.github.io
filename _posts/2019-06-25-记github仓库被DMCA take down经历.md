@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 记github仓库被DMCA经历
+title: 记github仓库被DMCA take down经历
 date: 2019-06-25 20:19:00.000000000 +09:00
 tags: DMCA github
 ---
