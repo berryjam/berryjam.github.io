@@ -35,14 +35,14 @@ tags: DMCA github
 </div>
 
 <p align="center">
-  <b>图 1 仓库因为涉嫌侵权被github官方临时关闭示意图</b><br>
+  <b>图 1 仓库因为涉嫌侵权被DMCA take down示意图</b><br>
 </p>
 
 至此找到了博客404的原因了，但是DMCA是什么？为什么会被github官方DMCA take down？为了抢救博客，又开始了一番google。
 
-## 2. 原来是github仓库被DMCA（拔网线）了
+## 2. 原来是github仓库被DMCA take down（拔网线）了
 
-
+《数字千禧年版权法》（Digital Millennium Copyright ACT，简称DMCA）是一个美国著作权法律，旨在保护网上作品著作权。
 
 ## 3. 还能抢救一下，真的就一下
 
