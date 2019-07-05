@@ -18,7 +18,7 @@ tags: DMCA github
 
 - [3. 还能抢救一下，真的就一下](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-06-25-%E8%AE%B0github%E4%BB%93%E5%BA%93%E8%A2%ABDMCA%20take%20down%E7%BB%8F%E5%8E%86.md#3-%E8%BF%98%E8%83%BD%E6%8A%A2%E6%95%91%E4%B8%80%E4%B8%8B%E7%9C%9F%E7%9A%84%E5%B0%B1%E4%B8%80%E4%B8%8B)
 
-- [4. 这次蛋疼的经历总结](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-05-07-fabric%E8%81%94%E7%9B%9F%E9%93%BE%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98TPS.md#4-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
+- [4. 这次蛋疼的经历总结](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-06-25-%E8%AE%B0github%E4%BB%93%E5%BA%93%E8%A2%ABDMCA%20take%20down%E7%BB%8F%E5%8E%86.md#4-%E8%BF%99%E6%AC%A1%E8%9B%8B%E7%96%BC%E7%9A%84%E7%BB%8F%E5%8E%86%E6%80%BB%E7%BB%93)
 
 - [5. 参考资料]()
 
