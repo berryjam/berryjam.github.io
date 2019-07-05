@@ -42,7 +42,7 @@ tags: DMCA github
 
 ## 2. 原来是github仓库被DMCA take down（拔网线）了
 
-《数字千禧年版权法》（Digital Millennium Copyright ACT，简称DMCA）是一个美国著作权法律，旨在保护网上作品著作权。
+《数字千禧年版权法》（Digital Millennium Copyright ACT，简称DMCA）是一个美国著作权法律，旨在保护网上作品著作权。这里推荐下阮一峰老师写的一篇博客[美国人怎么拔网线----DMCA入门](http://www.ruanyifeng.com/blog/2010/03/dmca.html)
 
 ## 3. 还能抢救一下，真的就一下
 
@@ -52,3 +52,6 @@ tags: DMCA github
 
 
 ## 5. 参考资料
+
+[1][阮一峰的网络日志：美国人怎么拔网线----DMCA入门](http://www.ruanyifeng.com/blog/2010/03/dmca.html)
+
