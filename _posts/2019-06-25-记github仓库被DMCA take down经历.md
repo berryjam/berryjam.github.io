@@ -57,7 +57,7 @@ tags: DMCA github
 - 硬刚，适合头铁人士。发起DMCA takedown counter notice，客观陈述自己是一个良好公民，并没有侵权。
 - 老实听话删除相关涉嫌侵权内容，并**告知github developer tema已经删除**（这很重要），要是删了没发邮件告知，仍然会被关闭，连最后一次机会都会被浪费掉。
 
-我自己刚开始申请了DMCA takedown counter
+我自己刚开始发起了DMCA takedown counter notice，但是
 
 ## 4. 这次蛋疼的经历总结
 
