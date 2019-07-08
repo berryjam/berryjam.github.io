@@ -42,16 +42,36 @@ tags: DMCA github
 
 ## 2. 原来是github仓库被DMCA take down（拔网线）了
 
-《数字千禧年版权法》（Digital Millennium Copyright ACT，简称DMCA）是一个美国著作权法律，旨在保护网上作品著作权。这里推荐下阮一峰老师写的一篇博客[美国人怎么拔网线----DMCA入门](http://www.ruanyifeng.com/blog/2010/03/dmca.html)
+《数字千禧年版权法》（Digital Millennium Copyright ACT，简称DMCA）是一个美国著作权法律，旨在保护网上作品著作权。这里推荐下阮一峰老师多年前写的一篇博客[美国人怎么拔网线----DMCA入门](http://www.ruanyifeng.com/blog/2010/03/dmca.html)。简而言之，就是如果网络上有侵犯到作者的著作权的情况，作者本人就可以利用DMCA对侵犯行为处理。
+
+在4月份的时候还发生过B站源码泄漏的事件，当时[B站就向github申请DMCA take down](https://www.oschina.net/news/106201/github-publishes-dmca-takedown-from-bilibili)关闭了源仓库和很多fork的仓库。所以有时候要学会利用DMCA保护合法著作权是一件好事，但是过度滥用就有点令人讨厌了。
+
+回到我这边来，17年的时候在个人博客写过一篇如何在本地搭建IDEA的license server的教程，并提供了相关docker镜像。其实在那篇博客里面，已经声明了这只是为了提供了一种在本地试用激活后IDE的高能功能的方法，请不要用于生产环境，在文章最后也附上了正版购买链接。没想到jetbrain公司在[5月28日提交了违反DMCA的申请](https://github.com/github/dmca/blob/master/2019/05/2019-05-28-Jetbrains.md)，导致整个github仓库被临时关闭。而博客用的github page，所以博客就变404了。但是留意到github上只是注明了临时关闭，并说明了DMCA政策和如何发起DMCA takedown反诉申请，个人当时觉得就还有机会恢复，于是又开始了新一轮google......
 
 ## 3. 还能抢救一下，真的就一下
 
+当时心里比较急，没细看github的DMCA政策导致恢复过程有点曲折。其实里面提到了在正式关闭前，会向仓库owner发起邮件提醒，在一天内删除涉嫌侵权内容。但是考虑到owner有可能因为放假或者不经常查收邮件等等各种原因，错过了修改窗口的owner（碰巧那周比较忙，没怎么看邮件-。-）还提供了最后一次补救机会。
 
+关于补救方法在[DMCA take down政策](https://www.baidu.com/link?url=UBrUG9zW24G8kBmWu9vPjeJL9eFdNuhmTYh3QGza8skbozj5jP4-f9Iqm9IgSXIE_zqtwIOJk34ZChR2rpFr4K&wd=&eqid=f85b39680006d29e000000035d22ba42)里有详细介绍。大致分为2种：
+
+- 硬刚，适合头铁人士。发起DMCA takedown counter notice，客观陈述自己是一个良好公民，并没有侵权。
+- 老实听话删除相关涉嫌侵权内容，并**告知github developer tema已经删除**（这很重要），要是删了没发邮件告知，仍然会被关闭，连最后一次机会都会被浪费掉。
+
+我自己刚开始
 
 ## 4. 这次蛋疼的经历总结
 
+回顾这次经历，个人对
+
+1. 要有版权意识，无论是故意还是无意的，要尊重别人的知识产权
+2. 对于著作权有异议的，可以发起DMCA take down反诉申请，维护自己合法权益
+3. 不要把github仓库当作中心化仓库，不然被关闭或者误删了，内容不好找回来
+4. 定期查收邮件
+5. 及时删除侵权内容，并告知github developer team
 
 ## 5. 参考资料
 
 [1][阮一峰的网络日志：美国人怎么拔网线----DMCA入门](http://www.ruanyifeng.com/blog/2010/03/dmca.html)
+
+[2][你的 Github 仓库被 DMCA Takedown 后怎么办？](https://linux.cn/article-9374-1.html)
 
