@@ -55,7 +55,7 @@ tags: DMCA github
 关于补救方法在[DMCA take down政策](https://www.baidu.com/link?url=UBrUG9zW24G8kBmWu9vPjeJL9eFdNuhmTYh3QGza8skbozj5jP4-f9Iqm9IgSXIE_zqtwIOJk34ZChR2rpFr4K&wd=&eqid=f85b39680006d29e000000035d22ba42)里有详细介绍。大致分为2种：
 
 - 硬刚，适合头铁人士。发起DMCA takedown counter notice，客观陈述自己是一个良好公民，并没有侵权。
-- 老实听话删除相关涉嫌侵权内容，并**告知github developer tema已经删除**（这很重要），要是删了没发邮件告知，仍然会被关闭，连最后一次机会都会被浪费掉。
+- 老实听话删除相关涉嫌侵权内容，并**告知github developer team已经删除**（这很重要），要是删了没发邮件告知，仍然会被关闭，连最后一次机会都会被浪费掉。
 
 我自己刚开始发起了DMCA takedown counter notice，描述了个人的某篇博客无意侵犯到相关著作权，申请解封仓库并承诺删除相关内容。然并卵，过了3、4周才收到github客服回复。后面留意到还有额外的一次补救窗口机会，果断又给客服发邮件申请。给developer@githubsupport.com邮箱，具体可[Inadvertently Missed the Window to Make Changes? ](https://help.github.com/en/articles/dmca-takedown-policy#c-what-if-i-inadvertently-missed-the-window-to-make-changes)。发完邮件大概过了4、5天，在周六的凌晨4点（大概是美国的下午4点左右）收到github客服的回复邮件，并明确在下周一开启窗口。一定要好好把握好最后一次机会。
 
