@@ -59,6 +59,27 @@ tags: DMCA github
 
 我自己刚开始发起了DMCA takedown counter notice，描述了个人的某篇博客无意侵犯到相关著作权，申请解封仓库并承诺删除相关内容。然并卵，过了3、4周才收到github客服回复。后面留意到还有额外的一次补救窗口机会，果断又给客服发邮件申请。给developer@githubsupport.com邮箱，具体可[Inadvertently Missed the Window to Make Changes? ](https://help.github.com/en/articles/dmca-takedown-policy#c-what-if-i-inadvertently-missed-the-window-to-make-changes)。发完邮件大概过了4、5天，在周六的凌晨4点（大概是美国的下午4点左右）收到github客服的回复邮件，并明确在下周一开启窗口。一定要好好把握好最后一次机会。
 
+[删除相关内容以及所有commite的副本](https://help.github.com/en/articles/removing-sensitive-data-from-a-repository)的方式有2种，记得需要先向github支持团队申请reopen仓库：
+
+- 1.使用bfg工具进行删除
+
+完全删除文件
+
+```
+$ bfg --delete-files YOUR-FILE-WITH-SENSITIVE-DATA
+```
+
+替换文件内容
+
+```
+$ bfg --replace-text passwords.txt
+```
+
+- 2.使用git filter-branch进行删除，具体方式请
+
+
+还有最后一种是重建仓库，这是实在无法清理干净历史数据才会选择的方法。因为这种方式会丢失所有的历史提交记录、issuse、pr、star、fork等等。
+
 ## 4. 这次蛋疼的经历总结
 
 回顾这次经历，个人有以下体会和建议：
