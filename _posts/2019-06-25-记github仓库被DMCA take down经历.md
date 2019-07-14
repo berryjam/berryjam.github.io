@@ -75,7 +75,7 @@ $ bfg --delete-files YOUR-FILE-WITH-SENSITIVE-DATA
 $ bfg --replace-text passwords.txt
 ```
 
-- 2.使用git filter-branch进行删除，具体方式请
+- 2.使用git filter-branch进行删除，具体方式请参考上面的链接。
 
 
 还有最后一种是重建仓库，这是实在无法清理干净历史数据才会选择的方法。因为这种方式会丢失所有的历史提交记录、issuse、pr、star、fork等等。
