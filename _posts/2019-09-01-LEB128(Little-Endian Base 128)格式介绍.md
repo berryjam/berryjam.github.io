@@ -32,6 +32,7 @@ tags: LEB128 变长编码 大小端
 <img src="https://github.com/berryjam/berryjam.github.io/blob/master/image/2019-09-01/%E5%A4%A7%E7%AB%AF%E5%B0%8F%E7%AB%AF%E6%B3%95%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80.png?raw=true" >	
 </div>
 
+
 <p align="center">
   <b>图 1 0x12345678 大小端表示法内存布局示意图</b><br>
 </p>
