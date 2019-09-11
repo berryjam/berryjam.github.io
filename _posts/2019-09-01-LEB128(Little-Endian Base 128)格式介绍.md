@@ -10,7 +10,7 @@ tags: LEB128 变长编码 大小端
 
 **Note. 本篇介绍Andorid系统在Dex文件采用LEB128变长编码格式，相对固定长度的编码格式，leb128编码存储利用率比较高，能让Dex文件尽可能的小。对于存储空间比较紧缺的移动设备，这非常有用。其中LEB128可以分为无符号(ULEB128)、有符号整数编码(SLEB128)，其中还包括一种特殊的无符号整数编码(ULEB128p1 unsigned LEB128 plus 1)。下面将分别具体介绍，并给出相关的编码、解码代码，在区块链领域内的应用场景有智能合约编码，希望能带来启发。**
 
-- [1. 小端表示法](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#1-%E5%B0%8F%E7%AB%AF%E8%A1%A8%E7%A4%BA%E6%B3%95)
+- [1. 大小端表示法]()
 
 - [2. ULEB128(unsigned LEB128，无符号整数编码)](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#2-uleb128unsigned-leb128%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81)
 
@@ -24,7 +24,7 @@ tags: LEB128 变长编码 大小端
 
 
 
-## 1. 小端表示法
+## 1. 大小端表示法
 
 在介绍LEB128编码前，先回忆下小端表示法。在计算机里，数据一般以字节为单位存储，如果任何数据都能用一个字节来表示的话，就没有大小端什么事了。但是现实中很多数据需要多个字节来表示（一个字节能表示最大的整数也就是127，像128至少要2个字节），这就会涉及到字节的存放先后顺序问题。比如说4个字节长度的一个十六进制的无符号整数：```0x12 34 56 78```，使用大、小端两种表示方法的内存布局示意图如图1所示：
 
