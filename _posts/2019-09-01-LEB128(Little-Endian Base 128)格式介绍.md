@@ -18,7 +18,7 @@ tags: LEB128 变长编码 大小端
 
 - [4. ULEB128p1(unsigned LEB128 plus 1，特殊无符号整数编码)](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#4-uleb128p1unsigned-leb128-plus-1%E7%89%B9%E6%AE%8A%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81)
 
-- [5, 参考资料](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#5-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
+- [5. 参考资料](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#5-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 
 
 
@@ -26,7 +26,11 @@ tags: LEB128 变长编码 大小端
 
 ## 1. 小端表示法
 
+在介绍LEB128编码前，先回忆下小端表示法。在计算机里，数据一般以字节为单位存储，如果任何数据都能用一个字节来表示的话，就没有大小端什么事了。但是现实中很多数据需要多个字节来表示（一个字节能表示最大的整数也就是127，像128至少要2个字节），这就会涉及到字节的存放先后顺序问题。比如说4个字节长度的一个十六进制的无符号整数：```0x12 34 56 78```，使用大、小端两种表示方法的内存布局示意图如图1所示：
 
+
+
+有时候我们会忘记和容易搞混这两种表示方法，但只要记住一句话：**小端表示法：低位字节存放在低地址。**就可以了。因为大端表示法是跟小端相反的，也就是低位字节存放在高地址，这样是不是就变得很好记忆呢？
 
 ## 2. ULEB128(unsigned LEB128，无符号整数编码)
 
