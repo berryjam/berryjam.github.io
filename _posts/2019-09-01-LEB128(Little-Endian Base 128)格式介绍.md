@@ -66,6 +66,7 @@ BOOL IsBigEndian()
 
 ## 2. ULEB128(unsigned LEB128，无符号整数编码)
 
+Little-Endian Base 128很显然是使用小端表示法，因为
 
 ## 3. SLEB128(signed LEB128，有符号整数编码)
 
@@ -76,4 +77,5 @@ BOOL IsBigEndian()
 ## 5. 参考资料
 
 [[1]](https://blog.csdn.net/ce123_zhouwei/article/details/6971544) 详解大端模式和小端模式
+[[2]](http://dwarfstd.org/doc/dwarf-2.0.0.pdf) DWARF Debugging Information Format 附录4. uleb128、sleb128算法伪代码
 
