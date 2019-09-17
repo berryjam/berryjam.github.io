@@ -71,7 +71,7 @@ Little-Endian Base 128很显然是使用小端表示法，因为计算机处理�
 其中无符号整数12726，如图2所示：
 
 <div align="center">
-<img src="https://github.com/berryjam/berryjam.github.io/blob/master/image/2019-09-01/uleb128_sample.jpg?raw=true" >	
+<img src="https://github.com/berryjam/berryjam.github.io/blob/master/image/2019-09-01/uleb128_sample.jpg?raw=true" height="60%" width="60%">	
 </div>
 
 <p align="center">
