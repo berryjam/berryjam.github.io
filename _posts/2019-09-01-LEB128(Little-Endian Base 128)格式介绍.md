@@ -68,7 +68,15 @@ BOOL IsBigEndian()
 
 Little-Endian Base 128很显然是使用小端表示法，因为计算机处理小端表示法比较方便，uleb128用于无符号整数的编码、解码。uleb128中每个字节只有7位为有效位，如果第一个字节的最高位为1，表示LEB128需要使用第二个字节，如果第二个字节的最高位为1，表示会使用到第三个字节，以此类推，直到最后的字节最高位为0，当然LEB128最多使用到5个字节，如果读取5个字节后下一个字节最高位仍为1，则表示该Dex文件无效，Dalvik虚拟机遇到这种情况是直接报错。
 
+其中无符号整数12726，如图2所示：
 
+<div align="center">
+<img src="https://github.com/berryjam/berryjam.github.io/blob/master/image/2019-09-01/uleb128_sample.jpg?raw=true" >	
+</div>
+
+<p align="center">
+  <b>图 2 uleb128编解码示例</b><br>
+</p>
 
 ## 3. SLEB128(signed LEB128，有符号整数编码)
 
