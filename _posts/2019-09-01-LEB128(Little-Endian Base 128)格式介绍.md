@@ -125,11 +125,76 @@ func uleb128decode(bytes []byte) uint64 {
 
 ## 3. SLEB128(signed LEB128，有符号整数编码)
 
-对于有符号的sleb128来说，计算方式与uleb128是一样的。只是对uleb128的最后一个字节的最高有效位进行了符号扩展。将上面的例子中的"**b6 63**"按照sleb128进行解读。"**b6 63**"的二进制形式不变，还是"**1011 0110,0110 0011**"，这个值的最后一个字节的最高有效位为1，所以这个值是个负数。所以这个值的最终结果为"**-1 0001,1011 0110**"。另外计算机中的数都是用补码表示的，所以需要求**1 0001，1011 0110**的相反数补码。由于**1 0001,1011 0110**实际占了14个比特（连续右移2次，每次7位，即**01 0001,1011 0110**），所以对应的相反数的补码为**10 0001,1011 0110**
+对于有符号的sleb128来说，计算方式与uleb128是一样的。只是对uleb128的最后一个字节的最高有效位进行了符号扩展。将上面的例子中的"**b6 63**"按照sleb128进行解读。"**b6 63**"的二进制形式不变，还是"**1011 0110,0110 0011**"，这个值的最后一个字节的最高有效位为1，所以这个值是个负数。所以这个值的最终结果为"**-1 0001,1011 0110**"。另外计算机中的数都是用补码表示的，所以需要求**1 0001，1011 0110**的相反数补码。由于**1 0001,1011 0110**实际占了14个比特（连续右移2次，每次7位，即**01 0001,1011 0110**），解码时最高位需要填充1，即**11 0001,1011 0110**,即-3658。
 
-01 0001 1011 0110
-10 1110 0100 1010
-2+8+64+512+1024+2048-8192
+<div align="center">
+<img src="https://github.com/berryjam/berryjam.github.io/blob/master/image/2019-09-01/sleb128_sample.jpg?raw=true" height="60%" width="60%">	
+</div>
+
+<p align="center">
+  <b>图 2 sleb128解码示例</b><br>
+</p>
+
+go的示例代码如下：
+
+```
+func sleb128encode(value int64) []byte {
+	res := []byte{}
+
+	more := 1
+
+	for more != 0 {
+		b := (byte)(value & 0x7F)
+		signFlag := (byte)(value & 0x40)
+		value >>= 7
+		if (value == 0 && signFlag == 0) ||  // 正数
+			(value == -1 && signFlag != 0) { // 负数
+			more = 0
+		} else {
+			b |= 0x80
+		}
+		res = append(res, b)
+	}
+
+	return res
+}
+
+func sleb128decode(bytes []byte) int64 {
+	if len(bytes) == 0 {
+		panic("illegal input")
+	}
+	var res uint64 = 0
+	var i uint8 = 0
+	isNegative := false
+	var shift uint64 = 0
+	for {
+		flag := bytes[i] & 0x80
+		low7bit := bytes[i] & 0x7F
+		res |= uint64(low7bit) << (shift)
+		shift+=7
+		if flag != 0 {
+			i++
+		} else {
+			signFlag := bytes[i] & 0x40
+			if signFlag != 0 {
+				isNegative = true
+			}
+			break
+		}
+	}
+	if !isNegative {
+		return int64(res)
+	} else {
+		tmp := int64(res)
+		tmp |= -(1 << shift)
+		return tmp
+	}
+}
+```
+
+LEB128的理解难点是在有符号数上，编码结束条件不像无符号数那么明显（value等于0），分两种情况：
+1. 若为正数，7bits中的最高位为0 并且 value == 0结束，value ==0 表示高字节没有数据，而7bits最高位为0用于表示是正数，用于解码；
+2. 若为负数，7bits中的最高位为1 并且 value == -1结束， value == -1表示高字节都是符号扩展出来的1， 7bits最高位为1用于表示是负数，在解码时高位填充1。
 
 ## 4. ULEB128p1(unsigned LEB128 plus 1，特殊无符号整数编码)
 
