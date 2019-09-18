@@ -192,7 +192,7 @@ func sleb128decode(bytes []byte) int64 {
 }
 ```
 
-LEB128的理解难点是在有符号数上，编码结束条件不像无符号数那么明显（value等于0），分两种情况：
+[3]LEB128的理解难点是在有符号数上，编码结束条件不像无符号数那么明显（value等于0），分两种情况：
 1. 若为正数，7bits中的最高位为0 并且 value == 0结束，value ==0 表示高字节没有数据，而7bits最高位为0用于表示是正数，用于解码；
 2. 若为负数，7bits中的最高位为1 并且 value == -1结束， value == -1表示高字节都是符号扩展出来的1， 7bits最高位为1用于表示是负数，在解码时高位填充1。
 
@@ -206,3 +206,4 @@ LEB128编码格式中还有一种特殊的编码格式uleb128p1(unsigned LEB128 
 
 [[2]](http://dwarfstd.org/doc/dwarf-2.0.0.pdf) DWARF Debugging Information Format 附录4第97页. uleb128、sleb128算法伪代码
 
+[[3]](https://www.cnblogs.com/liwugang/p/7594093.html) LEB128相关知识
