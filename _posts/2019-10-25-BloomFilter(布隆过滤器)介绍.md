@@ -10,13 +10,13 @@ tags: BloomFilter bitmap 布隆过滤器 位图 数据结构
 
 **Note. 本篇介绍一种存储结构-布隆过滤器。这种存储结构类似于hash map，能够存储和查询元素是否存在，并且存储效率一般要比hash map高很多。应用场景有，比如爬虫应用会应用它来进行URL去重，避免重复爬取相同网页。在此之前，再介绍一种数据结构-位图。本质上，布隆过滤器是一种改进后的位图，存储效率更高。**
 
-- [1.有1000万个整数，范围在1～1亿之间，如何快速判断某个整数是否存在？](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#1-%E5%A4%A7%E5%B0%8F%E7%AB%AF%E8%A1%A8%E7%A4%BA%E6%B3%95)
+- [1.有1000万个整数，范围在1～1亿之间，如何快速判断某个整数是否存在？](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-10-25-BloomFilter(%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8)%E4%BB%8B%E7%BB%8D.md#1-%E6%9C%891000%E4%B8%87%E4%B8%AA%E6%95%B4%E6%95%B0%E8%8C%83%E5%9B%B4%E5%9C%A811%E4%BA%BF%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%88%A4%E6%96%AD%E6%9F%90%E4%B8%AA%E6%95%B4%E6%95%B0%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8)
 
-- [2. 位图](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#2-uleb128unsigned-leb128%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81)
+- [2. 位图](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-10-25-BloomFilter(%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8)%E4%BB%8B%E7%BB%8D.md#2-%E4%BD%8D%E5%9B%BE)
 
-- [3. 布隆过滤器](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#3-sleb128signed-leb128%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81)
+- [3. 布隆过滤器](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-10-25-BloomFilter(%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8)%E4%BB%8B%E7%BB%8D.md#3-%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8)
 
-- [4. 参考资料](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#5-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
+- [4. 参考资料](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-10-25-BloomFilter(%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8)%E4%BB%8B%E7%BB%8D.md#4-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 
 
 ## 1. 有1000万个整数，范围在1～1亿之间，如何快速判断某个整数是否存在？
