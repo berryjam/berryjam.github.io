@@ -8,22 +8,18 @@ tags: BloomFilter bitmap 布隆过滤器 位图 数据结构
 
 # BloomFilter(布隆过滤器)介绍
 
-**Note. 本篇介绍Andorid系统在Dex文件采用LEB128变长编码格式，相对固定长度的编码格式，leb128编码存储利用率比较高，能让Dex文件尽可能的小。对于存储空间比较紧缺的移动设备，这非常有用。其中LEB128可以分为无符号(ULEB128)、有符号整数编码(SLEB128)，其中还包括一种特殊的无符号整数编码(ULEB128p1 unsigned LEB128 plus 1)。下面将分别具体介绍，并给出相关的编码、解码代码，在区块链领域内的应用场景有智能合约编码，希望能带来启发。**
+**Note. 本篇介绍一种存储结构-布隆过滤器。这种存储结构类似于hash map，能够存储和查询元素是否存在，并且存储效率一般要比hash map高很多。应用场景有，比如爬虫应用会应用它来进行URL去重，避免重复爬取相同网页。在此之前，再介绍一种数据结构-位图。本质上，布隆过滤器是一种改进后的位图，存储效率更高。**
 
-- [1. 大小端表示法](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#1-%E5%A4%A7%E5%B0%8F%E7%AB%AF%E8%A1%A8%E7%A4%BA%E6%B3%95)
+- [1.有1000万个整数，范围在1～1亿之间，如何快速判断某个整数是否存在？](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#1-%E5%A4%A7%E5%B0%8F%E7%AB%AF%E8%A1%A8%E7%A4%BA%E6%B3%95)
 
-- [2. ULEB128(unsigned LEB128，无符号整数编码)](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#2-uleb128unsigned-leb128%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81)
+- [2. 位图](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#2-uleb128unsigned-leb128%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81)
 
-- [3. SLEB128(signed LEB128，有符号整数编码)](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#3-sleb128signed-leb128%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81)
+- [3. 布隆过滤器](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#3-sleb128signed-leb128%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81)
 
-- [4. ULEB128p1(unsigned LEB128 plus 1，特殊无符号整数编码)](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#4-uleb128p1unsigned-leb128-plus-1%E7%89%B9%E6%AE%8A%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81)
-
-- [5. 参考资料](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#5-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
+- [4. 参考资料](https://github.com/berryjam/berryjam.github.io/blob/master/_posts/2019-09-01-LEB128(Little-Endian%20Base%20128)%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D.md#5-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 
 
-
-
-## 1. 大小端表示法
+## 1. 有1000万个整数，范围在1～1亿之间，如何快速判断某个整数是否存在？
 
 在介绍LEB128编码前，先回忆下小端表示法。在计算机里，数据一般以字节为单位存储，如果任何数据都能用一个字节来表示的话，就没有大小端什么事了。但是现实中很多数据需要多个字节来表示（一个字节能表示最大的整数也就是127，像128至少要2个字节），这就会涉及到字节的存放先后顺序问题。比如说4个字节长度的一个十六进制的无符号整数：```0x12 34 56 78```，使用大、小端两种表示方法的内存布局示意图如图1所示：
 
@@ -64,7 +60,7 @@ BOOL IsBigEndian()
 
 有时候我们会忘记和容易搞混这两种表示方法，但只要记住一句话：```小端表示法：低位字节存放在低地址。```就可以了。因为大端表示法是跟小端相反的，也就是低位字节存放在高地址，这样是不是就变得很好记忆呢？
 
-## 2. ULEB128(unsigned LEB128，无符号整数编码)
+## 2. 位图
 
 Little-Endian Base 128很显然是使用小端表示法，因为计算机处理小端表示法比较方便，uleb128用于无符号整数的编码、解码。uleb128中每个字节只有7位为有效位，如果第一个字节的最高位为1，表示LEB128需要使用第二个字节，如果第二个字节的最高位为1，表示会使用到第三个字节，以此类推，直到最后的字节最高位为0，当然LEB128最多使用到5个字节，如果读取5个字节后下一个字节最高位仍为1，则表示该Dex文件无效，Dalvik虚拟机遇到这种情况是直接报错。
 
@@ -123,7 +119,7 @@ func uleb128decode(bytes []byte) uint64 {
 }
 ```
 
-## 3. SLEB128(signed LEB128，有符号整数编码)
+## 3. 布隆过滤器
 
 对于有符号的sleb128来说，计算方式与uleb128是一样的。只是对uleb128的最后一个字节的最高有效位进行了符号扩展。将上面的例子中的"**b6 63**"按照sleb128进行解读。"**b6 63**"的二进制形式不变，还是"**1011 0110,0110 0011**"，这个值的最后一个字节的最高有效位为1，所以这个值是个负数。所以这个值的最终结果为"**-1 0001,1011 0110**"。另外计算机中的数都是用补码表示的，所以需要求**1 0001，1011 0110**的相反数补码。由于**1 0001,1011 0110**实际占了14个比特（连续右移2次，每次7位，即**01 0001,1011 0110**），解码时最高位需要填充1，即**11 0001,1011 0110**,即-3658。
 
@@ -196,11 +192,8 @@ func sleb128decode(bytes []byte) int64 {
 1. 若为正数，7bits中的最高位为0 并且 value == 0结束，value ==0 表示高字节没有数据，而7bits最高位为0用于表示是正数，用于解码；
 2. 若为负数，7bits中的最高位为1 并且 value == -1结束， value == -1表示高字节都是符号扩展出来的1， 7bits最高位为1用于表示是负数，在解码时高位填充1。
 
-## 4. ULEB128p1(unsigned LEB128 plus 1，特殊无符号整数编码)
 
-LEB128编码格式中还有一种特殊的编码格式uleb128p1(unsigned LEB128 plus 1)，这种编码格式的值为uleb128的值加上1。所以计算uleb128p1格式的值时，通常将这个值转换为uleb128格式，然后这个值的基础上减去一，得到的值就是uleb128p1格式的值。引入uleb128p1编码格式的目的是为了表示“-1”这个值，“-1”这个值也是最小的，例如LEB128编码“00”，使用uleb128格式进行解析，获得的值是0，所以uleb128p1格式的值为0减去1，等于-1。这也是uleb128p1表示的最小的值。
-
-## 5. 参考资料
+## 4. 参考资料
 
 [[1]](https://blog.csdn.net/ce123_zhouwei/article/details/6971544) 详解大端模式和小端模式
 
