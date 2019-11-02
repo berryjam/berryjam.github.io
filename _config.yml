@@ -47,7 +47,3 @@ social:
 ga:
      id: UA-114392495-1
      host: https://berryjam.github.io/
-
-# 生成 sitemap
-gems:
-  - jekyll-sitemap
