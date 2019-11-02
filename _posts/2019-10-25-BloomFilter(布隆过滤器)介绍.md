@@ -34,8 +34,38 @@ tags: BloomFilter bitmap 布隆过滤器 位图 数据结构
 利用位运算，我们可以借助编程语言中提供的数据类型如byte、int、long、char等类型，用其中某个位表示某个数字。对应的代码如下：
 
 ```
+type BitMap struct {
+	bytes []byte
+	nbits int
+}
 
+func MakeBitMap(n int) *BitMap {
+	res := new(BitMap)
+	res.nbits = n
+	res.bytes = make([]byte, n/8+1)
+	return res
+}
+
+func (b *BitMap) Set(k int) {
+	if k > b.nbits {
+		return
+	}
+	bytesIdx := k / 8
+	bitIdx := uint8(k % 8)
+	b.bytes[bytesIdx] |= 1 << bitIdx
+}
+
+func (b *BitMap) Get(k int) bool {
+	if k > b.nbits {
+		return false
+	}
+	bytesIdx := k / 8
+	bitIdx := uint8(k % 8)
+	return (b.bytes[bytesIdx] & (1 << bitIdx)) != 0
+}
 ```
+
+结合代码来看，可以发现位图通过数组下标来定位数据，因为查询效率很高。
 
 ## 3. 布隆过滤器
 
