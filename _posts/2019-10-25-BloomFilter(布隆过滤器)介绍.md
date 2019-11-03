@@ -73,12 +73,8 @@ func (b *BitMap) Get(k int) bool {
 
 ## 3. 布隆过滤器
 
-
+还是有1千万个整数，数据范围为1～10亿。布隆过滤器的处理方式是，仍然使用一个1亿个bit大小的位图，再通过哈希函数，对整数进行处理，让它落在1～1亿内。比如可以使用f(x)=x%n，其中x表示整数，n表示位图的大小。或者使用Fnv、Murmur这两种计算速度很快并且随机性比较好的散列函数。关于散列函数个数，该选择什么类型的散列函数，这篇博客**Bloom Filters by Example**[1]里有更详细的介绍。
 
 ## 4. 参考资料
 
-[[1]](https://blog.csdn.net/ce123_zhouwei/article/details/6971544) 详解大端模式和小端模式
-
-[[2]](http://dwarfstd.org/doc/dwarf-2.0.0.pdf) DWARF Debugging Information Format 附录4第97页. uleb128、sleb128算法伪代码
-
-[[3]](https://www.cnblogs.com/liwugang/p/7594093.html) LEB128相关知识
+[[1]](https://llimllib.github.io/bloomfilter-tutorial/) Bloom Filters by Example
