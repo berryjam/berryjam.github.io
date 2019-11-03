@@ -81,7 +81,15 @@ func (b *BitMap) Get(k int) bool {
 
 使用K个散列函数，对同一个整数求散列值，得到K个不同的散列值，分别记作X<sub>1</sub>,X<sub>2</sub>,X<sub>3</sub>,...,X<sub>K</sub>。将这K个数字作为位图的下标，将对应的BitMap[X<sub>1</sub>],BitMap[X<sub>2</sub>],BitMap[X<sub>3</sub>],...,BitMap[X<sub>K</sub>]都设置为1。即用K个bit来表示一个整数是否存在。
 
-当要查询某个整数是否存在的时候，用同样的K个散列函数，对该数字求散列值，分别得到Y[<sub>1</sub>],Y[<sub>2</sub>],Y[<sub>3</sub>],...,Y[<sub>K</sub>]。如果这个K个散列值，对应位图中的值都为1，则表示这个数字**可能存在**；如果有任意一个不为1，那就说明数字**真的不存在**。
+当要查询某个整数是否存在的时候，用同样的K个散列函数，对该数字求散列值，分别得到Y[<sub>1</sub>],Y[<sub>2</sub>],Y[<sub>3</sub>],...,Y[<sub>K</sub>]。如果这个K个散列值，对应位图中的值都为1，则表示这个数字**可能存在**；如果有任意一个不为1，那就说明数字**真的不存在**，布隆过滤器对存在的情况可能存在误报，下面举例说明。
+
+<div align="center">
+<img src="https://github.com/berryjam/berryjam.github.io/blob/master/image/bloom_filter/true_negative.jpg?raw=true" height="60%" width="60%">	
+</div>
+
+<p align="center">
+  <b>图 1 整数不存在的情况，布隆过滤器保证肯定不存在</b><br>
+</p>
 
 Bloom Filter的大致结构如下：一个位图+多个散列函数，主要是要根据数据量和数据的范围来选取适当的散列函数数量以及散列函数、位图的大小。
 
