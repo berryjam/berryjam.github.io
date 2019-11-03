@@ -91,6 +91,14 @@ func (b *BitMap) Get(k int) bool {
   <b>图 1 整数不存在的情况，布隆过滤器保证肯定不存在</b><br>
 </p>
 
+<div align="center">
+<img src="https://github.com/berryjam/berryjam.github.io/blob/master/image/bloom_filter/false_positive.jpg?raw=true" height="60%" width="60%">	
+</div>
+
+<p align="center">
+  <b>图 2 布隆过滤器误判整数存在的情况</b><br>
+</p>
+
 Bloom Filter的大致结构如下：一个位图+多个散列函数，主要是要根据数据量和数据的范围来选取适当的散列函数数量以及散列函数、位图的大小。
 
 ```
