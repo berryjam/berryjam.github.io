@@ -1,0 +1,6 @@
+[book]
+authors = ["berry.h"]
+language = "en"
+multilingual = false
+src = "src"
+title = "mastering-bitcoin-3rd"
